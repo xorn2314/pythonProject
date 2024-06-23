@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>텍스트 감정분석</h1>
+        <form action="/analyze" method="post">
+            <textarea name="text" rows="4" cols="50" placeholder="...">{{ text if text else '' }}</textarea><br>
+            <input type="submit" value="검색">
+        </form>
+        {% if sentiment %}
+        <div class="result">
+            <h2>감정 결과값</h2>
+            <p>감정: <strong>{{ sentiment }}</strong></p>
+            <p>수치: <strong>{{ score }}</strong></p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
